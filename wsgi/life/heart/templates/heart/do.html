@@ -1,0 +1,126 @@
+<html>
+<head>
+	<style>
+.activity {
+    border: 1px solid #FFFFFF;
+    float: left;
+    height: 100%;
+    text-align: center;
+    width: 75%;
+    padding: 10px 10px 0px 10px;
+}
+
+#monitors {
+    border: 2px solid #FFFFFF;
+    color: #41ACDF;
+    float: right;
+    font-family: Lucida Console;
+    font-size: 15px;
+    height: 100%;
+    width: 20%;
+    padding: 10px 10px 0px 10px;
+}
+
+.stat-text {
+	font-size: 60px;	
+}
+
+.stat-text-small {
+	font-size: 40px;	
+	padding-top: 10px;
+}
+
+
+#activity_name {
+    color: #750000;
+    font: 40px Lucida Console;
+    text-transform: uppercase;
+}
+
+
+#children ul {
+    overflow: auto;
+    list-style-type: none;
+}
+#children li {
+    height: 25px;
+    float: left;
+    margin-right: 0px;
+    border-right: 1px solid #A00;
+    padding: 0 20px;
+}
+#children li:last-child {
+    border-right: none;
+}
+#children li a {
+    color: #218CBF;
+    font: 18px/1 Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none !important;
+}
+#children li a:hover {
+    color: #41ACDF;
+    text-decoration: none !important;
+}
+
+.nav a{
+	font-family: Lucida Console;
+	font-size: 12px;
+	color: #41ACDF;
+	text-decoration: none !important;
+}
+
+.hspacing {
+    padding-left: 110px;
+    padding-right: 100px;
+}
+
+.systolic {
+	float: left;
+}
+
+.diastolic {
+	float: right;
+}
+
+#divBP {
+	margin-top: 80px;
+}
+
+#beatingHeart {
+	position:relative;
+	
+    	
+	</style>
+</head>
+<body background="{{ STATIC_URL }}img/HeartBG.png">
+	<span id="activity" class="activity">
+		<p>{{ message }} </p>
+		<span class="nav"><p> <a href="reset">Reset Profile</a> <span class="hspacing"></span> <a href="do">Go To Beginning</a></p></span>
+		<div id="activity_name">{{ activity_name }}</div>
+		<div id="children">
+			<ul>
+			{% for child in children %}
+				<li><a href="do?activity_name={{child}}">{{ child }}</a></li>
+			{% endfor %}
+			</ul>
+		</div>
+	</span>
+	<span id="monitors">
+		<div id="divOverall">
+			Overall<br>
+			<span class="stat-text">{{ overall }}</span>/100
+		</div>
+		<div id="divBP">
+			<div>
+				<span class="systolic">Systolic<br /> <span class="stat-text-small">{{ systolic }}</span></span>
+				<span class="diastolic">Diastolic <br /><span class="stat-text-small">{{ diastolic }}</span></span>
+			</div>
+		</div>
+		<div id="beatingHeart">
+			<img src="{{ STATIC_URL }}img/BeatingHeart.gif" style="height:180px">
+		</div>
+	</span>
+		
+</body>
+</html>
